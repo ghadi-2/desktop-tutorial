@@ -11,6 +11,27 @@
     <link rel="stylesheet" crossorigin href="/desktop-tutorial/assets/index-B3QYMmAy.css">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="startup" role="status" style="min-height:100vh;display:grid;place-content:center;text-align:center;gap:16px;padding:24px;box-sizing:border-box;background:#f5f7f2;color:#164c3d;font-family:Tahoma,Arial,sans-serif">
+        <h1 style="margin:0;font-size:28px">كليتي الذكية</h1>
+        <p id="startup-message" style="margin:0">جارٍ تحميل خريطة الكلية…</p>
+        <button id="startup-retry" hidden style="padding:12px 24px;border:0;border-radius:12px;background:#164c3d;color:white;font:inherit;cursor:pointer">إعادة المحاولة</button>
+        <noscript>فعّلي JavaScript في المتصفح لفتح الخريطة التفاعلية.</noscript>
+      </div>
+    </div>
+    <script>
+      (() => {
+        const retry = document.getElementById('startup-retry');
+        retry.addEventListener('click', () => location.reload());
+        function showRetry() {
+          const message = document.getElementById('startup-message');
+          if (!message) return;
+          message.textContent = 'تأخر تحميل الخريطة. تحققي من الاتصال ثم أعيدي المحاولة.';
+          retry.hidden = false;
+        }
+        window.addEventListener('error', showRetry, true);
+        setTimeout(showRetry, 20000);
+      })();
+    </script>
   </body>
 </html>
