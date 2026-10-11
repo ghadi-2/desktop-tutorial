@@ -1,0 +1,26 @@
+{
+  "name": "smart-college",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "preview:file": "npm run build && node scripts/create-preview.mjs",
+    "test": "tsx --test src/data.test.ts",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "three": "0.180.0",
+    "@fontsource-variable/noto-sans-arabic": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.180.0",
+    "typescript": "5.9.3",
+    "vite": "7.1.7",
+    "tsx": "4.20.6",
+    "@playwright/test": "1.56.1",
+    "@types/node": "^24.0.0"
+  }
+}
